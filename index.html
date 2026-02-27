@@ -199,9 +199,8 @@ atualizarMusica();
 setInterval(atualizarMusica, 15000);
 
 if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("service-worker.js");
-}
-</script>
+  navigator.serviceWorker.register("./sw.js");
+}</script>
 
 </body>
 </html>
