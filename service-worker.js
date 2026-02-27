@@ -1,5 +1,15 @@
-self.addEventListener("install", e => {
-  self.skipWaiting();
+self.addEventListener("install", function(e){
+e.waitUntil(
+caches.open("pedrada-cache").then(function(cache){
+return cache.addAll(["./"]);
+})
+);
 });
 
-self.addEventListener("fetch", e => {});
+self.addEventListener("fetch", function(event){
+event.respondWith(
+caches.match(event.request).then(function(response){
+return response || fetch(event.request);
+})
+);
+});
